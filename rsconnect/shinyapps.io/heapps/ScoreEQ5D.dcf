@@ -5,8 +5,8 @@ account: heapps
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2537846
-bundleId: 3354577
+bundleId: 3354587
 url: https://heapps.shinyapps.io/ScoreEQ5D/
-when: 1593966186.01152
+when: 1593966466.38675
 asMultiple: FALSE
 asStatic: FALSE

@@ -285,7 +285,7 @@ server <- function(input, output, session) {
         paste0('You have selected :', input$Score, ' for ', input$Country, ' with ages between ', 
                input$agerange[1], ' and ', input$agerange[2])
       }else{
-        paste0('You have selected :', input$Score, ' for ', input$Country,' with gender ' , input$gender,
+        paste0('You have selected :', input$Score, ' for ', input$Country,' for ' , input$gender,
                ' with ages between ', input$agerange[1], ' and ', input$agerange[2])
       }
       
