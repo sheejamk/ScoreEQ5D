@@ -87,6 +87,7 @@ ui <- fluidPage(
       uiOutput("dim_selector"),
       htmlOutput("country_selector"),
       htmlOutput("method_selector"),
+      htmlOutput("cw_selector"),
     ),
     mainPanel(
       conditionalPanel(
@@ -190,6 +191,9 @@ server <- function(input, output, session) {
              textInput("col5", "Response to question 5 (Anxiety/Depression)")
       )
     )
+  })
+  output$cw_selector <- renderText({
+    "For EQ-5D-5L scores, please select CW if you want to use crosswalk calculator"
   })
   output$download_selector = renderUI({ 
     conditionalPanel(
