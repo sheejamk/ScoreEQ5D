@@ -1,0 +1,221 @@
+{
+  "input": {
+    "agecriteria": false,
+    "agerange": [
+      0,
+      120
+    ],
+    "col1": "MO",
+    "col2": "SC",
+    "col3": "UA",
+    "col4": "PA",
+    "col5": "AD",
+    "Country": "Europe",
+    "file1": {
+      "name": [
+        "3L.csv"
+      ],
+      "size": [
+        344
+      ],
+      "type": [
+        "text/csv"
+      ],
+      "datapath": [
+        "0.csv"
+      ]
+    },
+    "gender": "NA",
+    "gendercriteria": false,
+    "goButton": 1,
+    "header": true,
+    "Method": "VAS",
+    "multiple": "Index values",
+    "Score": "EQ-5D-3L",
+    "ShowDataButton": 1,
+    "single": "Input score",
+    "type": "Multiple"
+  },
+  "output": {
+    "country_selector": {
+      "html": "<div class=\"form-group shiny-input-container\">\n  <label class=\"control-label\" for=\"Country\">Country:<\/label>\n  <div>\n    <select id=\"Country\"><option value=\"Argentina\" selected>Argentina<\/option>\n<option value=\"Belgium\">Belgium<\/option>\n<option value=\"Denmark\">Denmark<\/option>\n<option value=\"Europe\">Europe<\/option>\n<option value=\"Finland\">Finland<\/option>\n<option value=\"Germany\">Germany<\/option>\n<option value=\"Malaysia\">Malaysia<\/option>\n<option value=\"NewZealand\">NewZealand<\/option>\n<option value=\"Slovenia\">Slovenia<\/option>\n<option value=\"Spain\">Spain<\/option>\n<option value=\"UK\">UK<\/option>\n<option value=\"Australia\">Australia<\/option>\n<option value=\"Brazil\">Brazil<\/option>\n<option value=\"Canada\">Canada<\/option>\n<option value=\"Chile\">Chile<\/option>\n<option value=\"China\">China<\/option>\n<option value=\"France\">France<\/option>\n<option value=\"Iran\">Iran<\/option>\n<option value=\"Italy\">Italy<\/option>\n<option value=\"Japan\">Japan<\/option>\n<option value=\"Korea\">Korea<\/option>\n<option value=\"Netherlands\">Netherlands<\/option>\n<option value=\"Poland\">Poland<\/option>\n<option value=\"Portugal\">Portugal<\/option>\n<option value=\"Singapore\">Singapore<\/option>\n<option value=\"SriLanka\">SriLanka<\/option>\n<option value=\"Sweden\">Sweden<\/option>\n<option value=\"Taiwan\">Taiwan<\/option>\n<option value=\"Thailand\">Thailand<\/option>\n<option value=\"Trinidad_and_Tobago\">Trinidad_and_Tobago<\/option>\n<option value=\"USA\">USA<\/option>\n<option value=\"Zimbabwe\">Zimbabwe<\/option><\/select>\n    <script type=\"application/json\" data-for=\"Country\" data-nonempty=\"\">{}<\/script>\n  <\/div>\n<\/div>",
+      "deps": [
+        {
+          "name": "selectize",
+          "version": "0.11.2",
+          "src": {
+            "href": "shared/selectize"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "css/selectize.bootstrap3.css",
+          "head": "<!--[if lt IE 9]>\n<script src=\"shared/selectize/js/es5-shim.min.js\"><\/script>\n<![endif]-->\n<script src=\"shared/selectize/js/selectize.min.js\"><\/script>",
+          "attachment": null,
+          "package": null,
+          "all_files": true
+        }
+      ]
+    },
+    "data": "<table  class = 'table shiny-table table- spacing-s' style = 'width:auto;'>\n<thead> <tr> <th style='text-align: left;'> Sex <\/th> <th style='text-align: right;'> Age <\/th> <th style='text-align: right;'> MO <\/th> <th style='text-align: right;'> SC <\/th> <th style='text-align: right;'> UA <\/th> <th style='text-align: right;'> PA <\/th> <th style='text-align: right;'> AD <\/th>  <\/tr> <\/thead> <tbody>\n  <tr> <td> F <\/td> <td align=\"right\">  66 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  45 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  91 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   3 <\/td> <\/tr>\n  <tr> <td> M <\/td> <td align=\"right\">  73 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  96 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  51 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  36 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   2 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  45 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <\/tr>\n  <tr> <td> M <\/td> <td align=\"right\">  83 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  60 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  40 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  35 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  19 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  54 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  77 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   1 <\/td> <\/tr>\n  <tr> <td> M <\/td> <td align=\"right\">  18 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  39 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <\/tr>\n  <tr> <td> M <\/td> <td align=\"right\">  65 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   2 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  46 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <\/tr>\n  <tr> <td> M <\/td> <td align=\"right\">  96 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <\/tr>\n   <\/tbody> <\/table>",
+    "dim_selector": {
+      "html": "<div class=\"row\">\n  <div class=\"col-sm-12\">\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"col1\">Response to question 1 (Mobility)<\/label>\n      <input id=\"col1\" type=\"text\" class=\"form-control\" value=\"\"/>\n    <\/div>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"col2\">Response to question 2 (Self care)<\/label>\n      <input id=\"col2\" type=\"text\" class=\"form-control\" value=\"\"/>\n    <\/div>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"col3\">Response to question 3 (Usual activity)<\/label>\n      <input id=\"col3\" type=\"text\" class=\"form-control\" value=\"\"/>\n    <\/div>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"col4\">Response to question 4 (Pain)<\/label>\n      <input id=\"col4\" type=\"text\" class=\"form-control\" value=\"\"/>\n    <\/div>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"col5\">Response to question 5 (Anxiety/Depression)<\/label>\n      <input id=\"col5\" type=\"text\" class=\"form-control\" value=\"\"/>\n    <\/div>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "download_selector": {
+      "html": "<div data-display-if=\"input.type == &#39;Multiple&#39;\" data-ns-prefix=\"\">\n  <a id=\"downloadData\" class=\"btn btn-default shiny-download-link \" href=\"\" target=\"_blank\" download>\n    <i class=\"fa fa-download\"><\/i>\n    Download modified data\n  <\/a>\n<\/div>",
+      "deps": [
+        {
+          "name": "font-awesome",
+          "version": "5.13.0",
+          "src": {
+            "href": "font-awesome-5.13.0"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": [
+            "css/all.min.css",
+            "css/v4-shims.min.css"
+          ],
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        }
+      ]
+    },
+    "info": "You have selected :EQ-5D-3L for Europe with ages between 0 and 120",
+    "input_selector": {
+      "html": "<div data-display-if=\"input.type == &#39;Multiple&#39;\" data-ns-prefix=\"\">\n  <div class=\"form-group shiny-input-container\">\n    <label class=\"control-label\" for=\"file1\">Choose CSV File<\/label>\n    <div class=\"input-group\">\n      <label class=\"input-group-btn input-group-prepend\">\n        <span class=\"btn btn-default btn-file\">\n          Browse...\n          <input id=\"file1\" name=\"file1\" type=\"file\" style=\"display: none;\" accept=\"text/csv,text/comma-separated-values,text/plain,.csv\"/>\n        <\/span>\n      <\/label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"No file selected\" readonly=\"readonly\"/>\n    <\/div>\n    <div id=\"file1_progress\" class=\"progress active shiny-file-input-progress\">\n      <div class=\"progress-bar\"><\/div>\n    <\/div>\n  <\/div>\n  <div class=\"form-group shiny-input-container\">\n    <div class=\"checkbox\">\n      <label>\n        <input id=\"header\" type=\"checkbox\" checked=\"checked\"/>\n        <span>Header<\/span>\n      <\/label>\n    <\/div>\n  <\/div>\n  <div class=\"form-group shiny-input-container\">\n    <div class=\"checkbox\">\n      <label>\n        <input id=\"gendercriteria\" type=\"checkbox\"/>\n        <span>Gender Criteria Inclusion<\/span>\n      <\/label>\n    <\/div>\n  <\/div>\n  <div data-display-if=\"input.gendercriteria == true\" data-ns-prefix=\"\">\n    <div id=\"gender\" class=\"form-group shiny-input-radiogroup shiny-input-container\">\n      <label class=\"control-label\" for=\"gender\">\n        <h3>Choose the gender<\/h3>\n      <\/label>\n      <div class=\"shiny-options-group\">\n        <div class=\"radio\">\n          <label>\n            <input type=\"radio\" name=\"gender\" value=\"NA\" checked=\"checked\"/>\n            <span>NA<\/span>\n          <\/label>\n        <\/div>\n        <div class=\"radio\">\n          <label>\n            <input type=\"radio\" name=\"gender\" value=\"Male\"/>\n            <span>Male<\/span>\n          <\/label>\n        <\/div>\n        <div class=\"radio\">\n          <label>\n            <input type=\"radio\" name=\"gender\" value=\"Female\"/>\n            <span>Female<\/span>\n          <\/label>\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n  <div class=\"form-group shiny-input-container\">\n    <div class=\"checkbox\">\n      <label>\n        <input id=\"agecriteria\" type=\"checkbox\"/>\n        <span>Age Criteria Inclusion<\/span>\n      <\/label>\n    <\/div>\n  <\/div>\n  <div data-display-if=\"input.agecriteria == true\" data-ns-prefix=\"\">\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"agerange\">Age range:<\/label>\n      <input class=\"js-range-slider\" id=\"agerange\" data-type=\"double\" data-min=\"0\" data-max=\"120\" data-from=\"0\" data-to=\"120\" data-step=\"1\" data-grid=\"true\" data-grid-num=\"10\" data-grid-snap=\"false\" data-prettify-separator=\",\" data-prettify-enabled=\"true\" data-keyboard=\"true\" data-drag-interval=\"true\" data-data-type=\"number\"/>\n    <\/div>\n  <\/div>\n<\/div>",
+      "deps": [
+        {
+          "name": "ionrangeslider",
+          "version": "2.1.6",
+          "src": {
+            "href": "shared/ionrangeslider"
+          },
+          "meta": null,
+          "script": "js/ion.rangeSlider.min.js",
+          "stylesheet": [
+            "css/ion.rangeSlider.css",
+            "css/ion.rangeSlider.skinShiny.css"
+          ],
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": true
+        },
+        {
+          "name": "strftime",
+          "version": "0.9.2",
+          "src": {
+            "href": "shared/strftime"
+          },
+          "meta": null,
+          "script": "strftime-min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": true
+        }
+      ]
+    },
+    "method_selector": {
+      "html": "<div class=\"form-group shiny-input-container\">\n  <label class=\"control-label\" for=\"Method\">Method:<\/label>\n  <div>\n    <select id=\"Method\"><option value=\"VAS\">VAS<\/option><\/select>\n    <script type=\"application/json\" data-for=\"Method\" data-nonempty=\"\">{}<\/script>\n  <\/div>\n<\/div>",
+      "deps": [
+        {
+          "name": "selectize",
+          "version": "0.11.2",
+          "src": {
+            "href": "shared/selectize"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "css/selectize.bootstrap3.css",
+          "head": "<!--[if lt IE 9]>\n<script src=\"shared/selectize/js/es5-shim.min.js\"><\/script>\n<![endif]-->\n<script src=\"shared/selectize/js/selectize.min.js\"><\/script>",
+          "attachment": null,
+          "package": null,
+          "all_files": true
+        }
+      ]
+    },
+    "plot": {
+      "src": "[image data sha1: b81f9b2f5e310a37c62d530a5281be08e4975651]",
+      "width": 631,
+      "height": 400,
+      "coordmap": {
+        "panels": [
+          {
+            "domain": {
+              "left": -0.136,
+              "right": 0.836,
+              "bottom": -0.2,
+              "top": 5.2
+            },
+            "range": {
+              "left": 59.0400093565783,
+              "right": 600.759995207606,
+              "bottom": 325.559981639995,
+              "top": 58.0400147600037
+            },
+            "log": {
+              "x": null,
+              "y": null
+            },
+            "mapping": {
+
+            }
+          }
+        ],
+        "dims": {
+          "width": 631,
+          "height": 400
+        }
+      }
+    },
+    "result.data": "<table  class = 'table shiny-table table- spacing-s' style = 'width:auto;'>\n<thead> <tr> <th style='text-align: left;'> Sex <\/th> <th style='text-align: right;'> Age <\/th> <th style='text-align: right;'> MO <\/th> <th style='text-align: right;'> SC <\/th> <th style='text-align: right;'> UA <\/th> <th style='text-align: right;'> PA <\/th> <th style='text-align: right;'> AD <\/th> <th style='text-align: right;'> EQ-5D-3L scores <\/th>  <\/tr> <\/thead> <tbody>\n  <tr> <td> F <\/td> <td align=\"right\">  66 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\"> 0.02 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  45 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\"> 0.01 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  91 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\"> 0.13 <\/td> <\/tr>\n  <tr> <td> M <\/td> <td align=\"right\">  73 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\"> 0.14 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  96 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\"> 0.13 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  51 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\"> -0.01 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  36 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\"> 0.23 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  45 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\"> 0.27 <\/td> <\/tr>\n  <tr> <td> M <\/td> <td align=\"right\">  83 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\"> 0.15 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  60 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\"> 0.60 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  40 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\"> 0.15 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  35 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\"> 0.21 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  19 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\"> 0.57 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  54 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\"> 0.05 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  77 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\"> 0.28 <\/td> <\/tr>\n  <tr> <td> M <\/td> <td align=\"right\">  18 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\"> 0.39 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  39 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\"> 0.34 <\/td> <\/tr>\n  <tr> <td> M <\/td> <td align=\"right\">  65 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\"> 0.72 <\/td> <\/tr>\n  <tr> <td> F <\/td> <td align=\"right\">  46 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\"> 0.30 <\/td> <\/tr>\n  <tr> <td> M <\/td> <td align=\"right\">  96 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\">   2 <\/td> <td align=\"right\">   3 <\/td> <td align=\"right\">   1 <\/td> <td align=\"right\"> 0.27 <\/td> <\/tr>\n   <\/tbody> <\/table>",
+    "score_selector": {
+      "html": "<div class=\"form-group shiny-input-container\">\n  <label class=\"control-label\" for=\"Score\">\n    <h3>Score:<\/h3>\n  <\/label>\n  <div>\n    <select id=\"Score\"><option value=\"EQ-5D-3L\">EQ-5D-3L<\/option>\n<option value=\"EQ-5D-5L\" selected>EQ-5D-5L<\/option><\/select>\n    <script type=\"application/json\" data-for=\"Score\" data-nonempty=\"\">{}<\/script>\n  <\/div>\n<\/div>",
+      "deps": [
+        {
+          "name": "selectize",
+          "version": "0.11.2",
+          "src": {
+            "href": "shared/selectize"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "css/selectize.bootstrap3.css",
+          "head": "<!--[if lt IE 9]>\n<script src=\"shared/selectize/js/es5-shim.min.js\"><\/script>\n<![endif]-->\n<script src=\"shared/selectize/js/selectize.min.js\"><\/script>",
+          "attachment": null,
+          "package": null,
+          "all_files": true
+        }
+      ]
+    },
+    "tab_selector_multiple": {
+      "html": "<div class=\"tabbable\">\n  <ul class=\"nav nav-tabs shiny-tab-input\" id=\"multiple\" data-tabsetid=\"5697\">\n    <li class=\"active\">\n      <a href=\"#tab-5697-1\" data-toggle=\"tab\" data-value=\"Data\">Data<\/a>\n    <\/li>\n    <li>\n      <a href=\"#tab-5697-2\" data-toggle=\"tab\" data-value=\"Info\">Info<\/a>\n    <\/li>\n    <li>\n      <a href=\"#tab-5697-3\" data-toggle=\"tab\" data-value=\"Summary\">Summary<\/a>\n    <\/li>\n    <li>\n      <a href=\"#tab-5697-4\" data-toggle=\"tab\" data-value=\"Plot\">Plot<\/a>\n    <\/li>\n    <li>\n      <a href=\"#tab-5697-5\" data-toggle=\"tab\" data-value=\"Index values\">Index values<\/a>\n    <\/li>\n  <\/ul>\n  <div class=\"tab-content\" data-tabsetid=\"5697\">\n    <div class=\"tab-pane active\" data-value=\"Data\" id=\"tab-5697-1\">\n      <div id=\"data\" class=\"shiny-html-output\"><\/div>\n    <\/div>\n    <div class=\"tab-pane\" data-value=\"Info\" id=\"tab-5697-2\">\n      <pre id=\"info\" class=\"shiny-text-output noplaceholder\"><\/pre>\n    <\/div>\n    <div class=\"tab-pane\" data-value=\"Summary\" id=\"tab-5697-3\">\n      <div id=\"table\" class=\"shiny-html-output\"><\/div>\n    <\/div>\n    <div class=\"tab-pane\" data-value=\"Plot\" id=\"tab-5697-4\">\n      <div id=\"plot\" class=\"shiny-plot-output\" style=\"width: 100% ; height: 400px\"><\/div>\n    <\/div>\n    <div class=\"tab-pane\" data-value=\"Index values\" id=\"tab-5697-5\">\n      <div id=\"result.data\" class=\"shiny-html-output\"><\/div>\n    <\/div>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "tab_selector_single": {
+      "html": "<div class=\"tabbable\">\n  <ul class=\"nav nav-tabs shiny-tab-input\" id=\"single\" data-tabsetid=\"5005\">\n    <li class=\"active\">\n      <a href=\"#tab-5005-1\" data-toggle=\"tab\" data-value=\"Input score\">Input score<\/a>\n    <\/li>\n    <li>\n      <a href=\"#tab-5005-2\" data-toggle=\"tab\" data-value=\"Result\">Result<\/a>\n    <\/li>\n  <\/ul>\n  <div class=\"tab-content\" data-tabsetid=\"5005\">\n    <div class=\"tab-pane active\" data-value=\"Input score\" id=\"tab-5005-1\">\n      <pre id=\"input.score\" class=\"shiny-text-output noplaceholder\"><\/pre>\n    <\/div>\n    <div class=\"tab-pane\" data-value=\"Result\" id=\"tab-5005-2\">\n      <pre id=\"summary\" class=\"shiny-text-output noplaceholder\"><\/pre>\n    <\/div>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    },
+    "table": "<table  class = 'table shiny-table table- spacing-s' style = 'width:auto;'>\n<thead> <tr> <th style='text-align: right;'> Sum <\/th> <th style='text-align: right;'> Mean <\/th> <th style='text-align: right;'> SD <\/th> <th style='text-align: right;'> Median <\/th> <th style='text-align: right;'> Mode <\/th> <th style='text-align: right;'> SE <\/th> <th style='text-align: right;'> Minimum <\/th> <th style='text-align: right;'> Maximum <\/th> <th style='text-align: right;'> Count <\/th>  <\/tr> <\/thead> <tbody>\n  <tr> <td align=\"right\"> 4.94 <\/td> <td align=\"right\"> 0.25 <\/td> <td align=\"right\"> 0.20 <\/td> <td align=\"right\"> 0.22 <\/td> <td align=\"right\"> 0.02 <\/td> <td align=\"right\"> 0.04 <\/td> <td align=\"right\"> -0.01 <\/td> <td align=\"right\"> 0.72 <\/td> <td align=\"right\"> 20.00 <\/td> <\/tr>\n   <\/tbody> <\/table>",
+    "text_selector": "Please provide column names of responses from the data file provided. Or if the score is calculated using responses from single individual,\n    please provide values of the responses below",
+    "type_selector": {
+      "html": "<div id=\"type\" class=\"form-group shiny-input-radiogroup shiny-input-container\">\n  <label class=\"control-label\" for=\"type\">\n    <h4>Mutiple or single score:<\/h4>\n  <\/label>\n  <div class=\"shiny-options-group\">\n    <div class=\"radio\">\n      <label>\n        <input type=\"radio\" name=\"type\" value=\"Multiple\" checked=\"checked\"/>\n        <span>Multiple<\/span>\n      <\/label>\n    <\/div>\n    <div class=\"radio\">\n      <label>\n        <input type=\"radio\" name=\"type\" value=\"Single\"/>\n        <span>Single<\/span>\n      <\/label>\n    <\/div>\n  <\/div>\n<\/div>",
+      "deps": [
+
+      ]
+    }
+  },
+  "export": {
+
+  }
+}

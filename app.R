@@ -121,7 +121,7 @@ server <- function(input, output, session) {
   })
   #depending on the type of calculation number of tabs are chosen
   output$tab_selector_multiple = renderUI({ #creates type of calculation
-    tabsetPanel(type = "tabs",
+    tabsetPanel(type = "tabs",id = "multiple",
                 tabPanel("Data", tableOutput("data")),
                 tabPanel("Info", verbatimTextOutput("info")),
                 tabPanel("Summary", tableOutput("table")),
@@ -129,7 +129,7 @@ server <- function(input, output, session) {
                 tabPanel("Index values", tableOutput("result.data")))
   })
   output$tab_selector_single = renderUI({ #creates type of calculation
-    tabsetPanel(type = "tabs",
+    tabsetPanel(type = "tabs", id = "single",
                 tabPanel("Input score", verbatimTextOutput("input.score")),
                 tabPanel("Result", verbatimTextOutput("summary")))
   })
@@ -164,13 +164,13 @@ server <- function(input, output, session) {
                   ".csv")
       ),
       checkboxInput("header", "Header", TRUE),
-      checkboxInput("gendercriteria", "Gender Crtieria Inclusion",FALSE),
+      checkboxInput("gendercriteria", "Gender Criteria Inclusion",FALSE),
       conditionalPanel(
         condition = "input.gendercriteria == true",
         radioButtons("gender", label = h3("Choose the gender"),
                      choices = list("NA"="NA","Male" = "Male", "Female" = "Female"))
       ),
-      checkboxInput("agecriteria", "Age Crtieria Inclusion"),
+      checkboxInput("agecriteria", "Age Criteria Inclusion"),
       conditionalPanel(
         condition = "input.agecriteria == true",
         # Input: Specification of range within

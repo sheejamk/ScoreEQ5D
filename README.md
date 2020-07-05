@@ -1,1 +1,1 @@
-# ScoreEQ5D
+This set of functions is for generating a shiny app that calcuates EQ5D index values for the scores collected. In the app, the scores cane be provided as single score or from a data file in CSV file. The app calculates both EQ-5D-5L and EQ-5D-3L indexvaaues. Also it can be used to map 5L to 3L using Van Hout etal method as recommended by NICE. For more information on the calculations, please see the use guide in ValueEQ5D package.
