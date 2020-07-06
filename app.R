@@ -1,5 +1,4 @@
 library(shiny)
-
 library(valueEQ5D)
 
 #The EQ-5D levels, countries and corresponding methods pre-loaded as a table for later use
@@ -87,7 +86,7 @@ ui <- fluidPage(
       uiOutput("dim_selector"),
       htmlOutput("country_selector"),
       htmlOutput("method_selector"),
-      htmlOutput("cw_selector"),
+      htmlOutput("cw_selector")
     ),
     mainPanel(
       conditionalPanel(
@@ -104,7 +103,7 @@ ui <- fluidPage(
   actionButton("goButton", "Calculate !"),
   br(),
   uiOutput("download_selector")
-  
+
 )
 server <- function(input, output, session) {
   #choose the score that you want to calculate
@@ -195,13 +194,13 @@ server <- function(input, output, session) {
   output$cw_selector <- renderText({
     "For EQ-5D-5L scores, please select CW if you want to use crosswalk calculator"
   })
-  output$download_selector = renderUI({ 
+  output$download_selector = renderUI({
     conditionalPanel(
       condition ="input.type == 'Multiple'",
       downloadButton("downloadData","Download modified data")
     )
   })
-  
+
   datasetInput <- reactive({
     inFile <- input$file1
     if (is.null(inFile))
@@ -211,7 +210,7 @@ server <- function(input, output, session) {
     )
     eq5d.data<-read.csv(inFile$datapath, header = input$header)
   })
-  
+
   calculate<-reactive({
     dataset <- datasetInput()
     dims<-c(dataset[[input$col1]],dataset[[input$col2]],dataset[[input$col3]],dataset[[input$col4]],dataset[[input$col5]])
@@ -264,7 +263,7 @@ server <- function(input, output, session) {
       ans<-value3LInd(input$Country,input$Method,input$col1,input$col2,input$col3, input$col4,input$col5)
     }
   })
-  
+
   observeEvent(input$ShowDataButton,{
     output$data <- renderTable({
       validate(
@@ -275,20 +274,20 @@ server <- function(input, output, session) {
     output$input.score <- renderText({
       paste0('You have selected : Score as ', input$col1,input$col2,input$col3, input$col4,input$col5,
              ' for ', input$Country)
-      
+
     })
   })
-  
+
   observeEvent(input$goButton, {
     output$info <- renderText({
       if(is.na(input$gender) | is.null(input$gender) | input$gender == "NA"){
-        paste0('You have selected :', input$Score, ' for ', input$Country, ' with ages between ', 
+        paste0('You have selected :', input$Score, ' for ', input$Country, ' with ages between ',
                input$agerange[1], ' and ', input$agerange[2])
       }else{
         paste0('You have selected :', input$Score, ' for ', input$Country,' for ' , input$gender,
                ' with ages between ', input$agerange[1], ' and ', input$agerange[2])
       }
-      
+
     })
     output$summary <- renderText({
       paste0('The index value is ', calculate_single())
@@ -299,17 +298,16 @@ server <- function(input, output, session) {
     output$result.data <- renderTable({
       answer<-calculate()$modifiedData
     })
-    
+
     output$plot <- renderPlot({
       answer<-plot(calculate()$histogram)
     })
     output$downloadData <- downloadHandler(
-      filename = function() { paste(input$Score, "_",input$Country,"_",input$Method,".csv",sep="") },
+      filename = function() { paste(input$Score, "_",input$Country,"_",input$Method,".csv",sep="")},
       content = function(file) {
-        write.csv(calculate()$modifiedData,file,row.names=F)
+        write.csv(calculate()$modifiedData,file,row.names = F)
       }
     )
-    
   })
 }
 
