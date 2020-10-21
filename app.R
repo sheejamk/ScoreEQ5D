@@ -2,7 +2,7 @@ library(shiny)
 library(valueEQ5D)
 
 #The EQ-5D levels, countries and corresponding methods pre-loaded as a table for later use
-scoreData = read.table(
+score_data <- read.table(
   text = " Score	Country	Method
   EQ-5D-3L	Argentina	VAS
   EQ-5D-3L	Belgium	VAS
@@ -99,7 +99,7 @@ ui <- fluidPage(
       )
     )
   ),
-  actionButton("ShowDataButton","Show the data !"),
+  actionButton("ShowDataButton", "Show the data !"),
   actionButton("goButton", "Calculate !"),
   br(),
   uiOutput("download_selector")
@@ -107,43 +107,43 @@ ui <- fluidPage(
 )
 server <- function(input, output, session) {
   #choose the score that you want to calculate
-  output$score_selector = renderUI({
+  output$score_selector <- renderUI({
     selectInput(inputId = "Score", #name of input
                 label = h3("Score:"), #label displayed in ui
-                choices = as.character(unique(scoreData$Score)),
+                choices = as.character(unique(score_data$Score)),
                 # calls unique values from the score column in the previously created table
-                selected = unique(scoreData$Score)[2]) #default choice (not required)
+                selected = unique(score_data$Score)[2]) #default choice (not required)
   })
   #choose the type of calculation
-  output$type_selector = renderUI({ #creates type of calculation
+  output$type_selector <- renderUI({
     radioButtons("type", label = h4("Mutiple or single score:"),
-                 choices = list("Multiple" = "Multiple", "Single" = "Single"),selected = "Multiple")
+                 choices = list("Multiple" = "Multiple", "Single" = "Single"), selected = "Multiple")
   })
   #depending on the type of calculation number of tabs are chosen
-  output$tab_selector_multiple = renderUI({ #creates type of calculation
-    tabsetPanel(type = "tabs",id = "multiple",
+  output$tab_selector_multiple <- renderUI({ 
+    tabsetPanel(type = "tabs", id = "multiple",
                 tabPanel("Data", tableOutput("data")),
                 tabPanel("Info", verbatimTextOutput("info")),
                 tabPanel("Summary", tableOutput("table")),
                 tabPanel("Plot", plotOutput("plot")),
                 tabPanel("Index values", tableOutput("result.data")))
   })
-  output$tab_selector_single = renderUI({ #creates type of calculation
+  output$tab_selector_single <- renderUI({ 
     tabsetPanel(type = "tabs", id = "single",
                 tabPanel("Input score", verbatimTextOutput("input.score")),
                 tabPanel("Result", verbatimTextOutput("summary")))
   })
-  output$country_selector = renderUI({#creates country select box object called in ui
-    data_available1 = scoreData[scoreData$Score == input$Score,"Country"]
+  output$country_selector <- renderUI({#creates country select box object called in ui
+    data_available1 <- score_data[score_data$Score == input$Score, "Country"]
     #creates a reactive list of available countries
     selectInput(inputId = "Country", #name of input
                 label = "Country:", #label displayed in ui
-                choices = unique(data_available1),#calls list of available countries
+                choices = unique(data_available1), #calls list of available countries
                 selected = unique(data_available1)[1])
   })
-  output$method_selector = renderUI({#creates method select box object called in ui
-    data_available1 = scoreData[scoreData$Score == input$Score,]
-    data_available = data_available1[data_available1$Country == input$Country,"Method"]
+  output$method_selector <- renderUI({#creates method select box object called in ui
+    data_available1 <- score_data[score_data$Score == input$Score, ]
+    data_available <- data_available1[data_available1$Country == input$Country, "Method"]
     #creates a reactive list of available methods based on the country selection made
     selectInput(inputId = "Method", #name of input
                 label = "Method:", #label displayed in ui
@@ -154,7 +154,7 @@ server <- function(input, output, session) {
     "Please provide column names of responses from the data file provided. Or if the score is calculated using responses from single individual,
     please provide values of the responses below"
   })
-  output$input_selector = renderUI({ #creates type of calculation
+  output$input_selector <- renderUI({
     conditionalPanel(
       condition = "input.type == 'Multiple'",
       fileInput("file1", "Choose CSV File",
@@ -164,11 +164,11 @@ server <- function(input, output, session) {
                   ".csv")
       ),
       checkboxInput("header", "Header", TRUE),
-      checkboxInput("gendercriteria", "Gender Criteria Inclusion",FALSE),
+      checkboxInput("gendercriteria", "Gender Criteria Inclusion", FALSE),
       conditionalPanel(
         condition = "input.gendercriteria == true",
         radioButtons("gender", label = h3("Choose the gender"),
-                     choices = list("NA"="NA","Male" = "Male", "Female" = "Female"))
+                     choices = list("NA" = "NA", "Male" = "Male", "Female" = "Female"))
       ),
       checkboxInput("agecriteria", "Age Criteria Inclusion"),
       conditionalPanel(
@@ -176,11 +176,11 @@ server <- function(input, output, session) {
         # Input: Specification of range within
         sliderInput("agerange", "Age range:",
                     min = 0, max = 120,
-                    value = c(0,120))
+                    value = c(0, 120))
       )
     )
   })
-  output$dim_selector = renderUI({
+  output$dim_selector <- renderUI({
     fluidRow(
       column(12,
              textInput("col1", "Response to question 1 (Mobility)"),
@@ -194,10 +194,10 @@ server <- function(input, output, session) {
   output$cw_selector <- renderText({
     "For EQ-5D-5L scores, please select CW if you want to use crosswalk calculator"
   })
-  output$download_selector = renderUI({
+  output$download_selector <- renderUI({
     conditionalPanel(
-      condition ="input.type == 'Multiple'",
-      downloadButton("downloadData","Download modified data")
+      condition <- "input.type == 'Multiple'",
+      downloadButton("downloadData", "Download modified data")
     )
   })
 
@@ -206,106 +206,113 @@ server <- function(input, output, session) {
     if (is.null(inFile))
       return(NULL)
     validate(
-      need(inFile!= "", "Please select a data set")
+      need(inFile != "", "Please select a data set")
     )
-    eq5d.data<-read.csv(inFile$datapath, header = input$header)
+    eq5d_data <- read.csv(inFile$datapath, header = input$header)
   })
 
-  calculate<-reactive({
+  calculate <- reactive({
     dataset <- datasetInput()
-    dims<-c(dataset[[input$col1]],dataset[[input$col2]],dataset[[input$col3]],dataset[[input$col4]],dataset[[input$col5]])
-    if(is.null(dataset[[input$col1]])|| is.null(dataset[[input$col2]])|| is.null(dataset[[input$col3]])||
-       is.null(dataset[[input$col4]])|| is.null(dataset[[input$col5]])){
+    dims <- c(dataset[[input$col1]], dataset[[input$col2]], dataset[[input$col3]],
+              dataset[[input$col4]], dataset[[input$col5]])
+    if (is.null(dataset[[input$col1]]) || is.null(dataset[[input$col2]]) 
+        || is.null(dataset[[input$col3]]) || is.null(dataset[[input$col4]])
+        || is.null(dataset[[input$col5]])) {
       stop("EQ-5D column names many be empty or invalid")
     }
-    if(input$Score=="EQ-5D-5L"){
-      if(any(dims<0) || any(dims>5))
-        stop("EQ-5D-5L dimensions are not valid")
+    if (input$Score == "EQ-5D-5L") {
+      if (any(dims < 0) || any(dims > 5)) stop("Invalid EQ-5D-5L dimensions")
     }
-    if(input$Score=="EQ-5D-3L"){
-      if(any(dims<0) || any(dims>3))
-        stop("EQ-5D-3L dimensions are not valid")
+    if (input$Score == "EQ-5D-3L") {
+      if (any(dims < 0) || any(dims > 3)) stop("Invalid EQ-5D-3L dimensions")
     }
-    if(input$Score=="EQ-5D-5L"){
-      if(input$Method=="CW"){
-        ans<-map5Lto3L(dataset,input$col1,input$col2,input$col3, input$col4,input$col5,
-                       input$Country,input$Method, input$gender, c(input$agerange[1],input$agerange[2]))
+    if (input$Score == "EQ-5D-5L") {
+      if (input$Method == "CW") {
+        ans <- map_5Lto3L(dataset, input$col1, input$col2, input$col3, 
+                         input$col4, input$col5, input$Country, input$Method,
+                         input$gender, c(input$agerange[1], input$agerange[2]))
       }else{
-        ans<-value5L(dataset,input$col1,input$col2,input$col3, input$col4,input$col5,
-                     input$Country, input$gender, c(input$agerange[1],input$agerange[2]))
+        ans <- value_5L(dataset, input$col1, input$col2, input$col3, 
+                       input$col4, input$col5, input$Country, input$gender, 
+                       c(input$agerange[1], input$agerange[2]))
       }
     }else{
-      ans<-value3L(dataset,input$col1,input$col2,input$col3, input$col4,input$col5,
-                   input$Country,input$Method, input$gender, c(input$agerange[1],input$agerange[2]))
+      ans <- value_3L(dataset, input$col1, input$col2, input$col3, input$col4,
+                     input$col5, input$Country, input$Method, input$gender, 
+                     c(input$agerange[1], input$agerange[2]))
     }
     return(ans)
   })
-  calculate_single<-reactive({
-    dims<-c( input$col1,input$col2,input$col3, input$col4,input$col5)
-    if(is.null(input$col1)|| is.null(input$col2)|| is.null(input$col3)|| is.null(input$col4)|| is.null(input$col5)){
+  calculate_single <- reactive({ 
+    dims <- c( input$col1, input$col2, input$col3, input$col4, input$col5)
+    if (is.null(input$col1) || is.null(input$col2) || is.null(input$col3) 
+        || is.null(input$col4) || is.null(input$col5)) {
       stop("EQ-5D columns many be empty or invalid")
     }
-    if(input$Score=="EQ-5D-5L"){
-      if(any(dims<0) || any(dims>5))
-        stop("EQ-5D-5L dimensions are not valid")
+    if (input$Score == "EQ-5D-5L") {
+      if (any(dims < 0) || any(dims > 5)) stop("Invalid EQ-5D-5L dimensions")
     }
-    if(input$Score=="EQ-5D-3L"){
-      if(any(dims<0) || any(dims>3))
-        stop("EQ-5D-3L dimensions are not valid")
+    if (input$Score == "EQ-5D-3L") {
+      if (any(dims < 0) || any(dims > 3)) stop("Invalid EQ-5D-3L dimensions")
     }
-    if(input$Score=="EQ-5D-5L"){
-      if(input$Method=="CW"){
-        ans<-map5Lto3LInd(input$Country,input$Method,input$col1,input$col2,input$col3, input$col4,input$col5)
-      }else{
-        ans<-value5LInd(input$Country,input$col1,input$col2,input$col3, input$col4,input$col5)
+    if (input$Score == "EQ-5D-5L") {
+      if (input$Method == "CW") {
+        ans <- map_5Lto3L_Ind(input$Country, input$Method, input$col1, 
+                              input$col2, input$col3, input$col4, input$col5)
+      } else {
+        ans <- value_5L_Ind(input$Country, input$col1, input$col2, input$col3, 
+                            input$col4, input$col5)
       }
     }else{
-      ans<-value3LInd(input$Country,input$Method,input$col1,input$col2,input$col3, input$col4,input$col5)
+      ans <- value_3L_Ind(input$Country, input$Method, input$col1, input$col2,
+                          input$col3, input$col4, input$col5)
     }
   })
 
-  observeEvent(input$ShowDataButton,{
+  observeEvent(input$ShowDataButton, {
     output$data <- renderTable({
       validate(
-        need(input$file1!= "", "No data file found")
+        need(input$file1 != "", "No data file found")
       )
       dataset <- datasetInput()
     })
     output$input.score <- renderText({
-      paste0('You have selected : Score as ', input$col1,input$col2,input$col3, input$col4,input$col5,
-             ' for ', input$Country)
+      paste0("You have selected : Score as ", input$col1, input$col2, input$col3, 
+             input$col4, input$col5, " for ", input$Country)
 
     })
   })
 
   observeEvent(input$goButton, {
     output$info <- renderText({
-      if(is.na(input$gender) | is.null(input$gender) | input$gender == "NA"){
-        paste0('You have selected :', input$Score, ' for ', input$Country, ' with ages between ',
-               input$agerange[1], ' and ', input$agerange[2])
+      if (is.na(input$gender) | is.null(input$gender) | input$gender == "NA") {
+        paste0("You have selected :", input$Score, " for ", input$Country, 
+               " with ages between ", input$agerange[1], " and ", input$agerange[2])
       }else{
-        paste0('You have selected :', input$Score, ' for ', input$Country,' for ' , input$gender,
-               ' with ages between ', input$agerange[1], ' and ', input$agerange[2])
+        paste0("You have selected :", input$Score, " for ", input$Country, " for ",
+               input$gender, " with ages between ", input$agerange[1], " and ", 
+               input$agerange[2])
       }
 
     })
     output$summary <- renderText({
-      paste0('The index value is ', calculate_single())
+      paste0("The index value is ", calculate_single())
     })
     output$table <- renderTable({
-      answer<-calculate()$stats
+      answer <- calculate()$stats
     })
     output$result.data <- renderTable({
-      answer<-calculate()$modifiedData
+      answer <- calculate()$modifiedData
     })
 
     output$plot <- renderPlot({
-      answer<-plot(calculate()$histogram)
+      answer <- plot(calculate()$histogram)
     })
     output$downloadData <- downloadHandler(
-      filename = function() { paste(input$Score, "_",input$Country,"_",input$Method,".csv",sep="")},
+      filename = function() { paste(input$Score, "_", input$Country, "_",
+                                    input$Method, ".csv", sep = "")},
       content = function(file) {
-        write.csv(calculate()$modifiedData,file,row.names = F)
+        write.csv(calculate()$modifiedData, file, row.names = F)
       }
     )
   })
