@@ -1,7 +1,8 @@
 library(shiny)
 library(valueEQ5D)
 
-#The EQ-5D levels, countries and corresponding methods pre-loaded as a table for later use
+#The EQ-5D levels, countries and corresponding methods pre-loaded as
+#a table for later use
 score_data <- read.table(
   text = " Score	Country	Method
   EQ-5D-3L	Argentina	VAS
@@ -74,7 +75,6 @@ score_data <- read.table(
   EQ-5D-5L	USA	CW
   EQ-5D-5L	Zimbabwe	CW",
   header = TRUE, stringsAsFactors = FALSE)
-
 ui <- fluidPage(
   titlePanel("EQ-5D scoring"),
   sidebarLayout(
@@ -111,13 +111,16 @@ server <- function(input, output, session) {
     selectInput(inputId = "Score", #name of input
                 label = h3("Score:"), #label displayed in ui
                 choices = as.character(unique(score_data$Score)),
-                # calls unique values from the score column in the previously created table
-                selected = unique(score_data$Score)[2]) #default choice (not required)
+                # calls unique values from the score column in the 
+                # previously created table
+                selected = unique(score_data$Score)[2]) 
+                #default choice (not required)
   })
   #choose the type of calculation
   output$type_selector <- renderUI({
     radioButtons("type", label = h4("Mutiple or single score:"),
-                 choices = list("Multiple" = "Multiple", "Single" = "Single"), selected = "Multiple")
+                 choices = list("Multiple" = "Multiple", "Single" = "Single"), 
+                 selected = "Multiple")
   })
   #depending on the type of calculation number of tabs are chosen
   output$tab_selector_multiple <- renderUI({ 
@@ -130,28 +133,32 @@ server <- function(input, output, session) {
   })
   output$tab_selector_single <- renderUI({ 
     tabsetPanel(type = "tabs", id = "single",
-                tabPanel("Input score", verbatimTextOutput("input.score")),
+                tabPanel("Input score", verbatimTextOutput("input_score")),
                 tabPanel("Result", verbatimTextOutput("summary")))
   })
-  output$country_selector <- renderUI({#creates country select box object called in ui
+  #creates country select box object called in ui
+  output$country_selector <- renderUI({
     data_available1 <- score_data[score_data$Score == input$Score, "Country"]
     #creates a reactive list of available countries
     selectInput(inputId = "Country", #name of input
                 label = "Country:", #label displayed in ui
-                choices = unique(data_available1), #calls list of available countries
+                choices = unique(data_available1), #calls list of countries
                 selected = unique(data_available1)[1])
   })
-  output$method_selector <- renderUI({#creates method select box object called in ui
+  #creates method select box object called in ui
+  output$method_selector <- renderUI({
     data_available1 <- score_data[score_data$Score == input$Score, ]
-    data_available <- data_available1[data_available1$Country == input$Country, "Method"]
-    #creates a reactive list of available methods based on the country selection made
+    data_available <- data_available1[data_available1$Country == input$Country, 
+                                      "Method"]
+    #creates a reactive list of available methods based on the country  
     selectInput(inputId = "Method", #name of input
                 label = "Method:", #label displayed in ui
                 choices = unique(data_available),
                 selected = unique(data_available)[2])
   })
   output$text_selector <- renderText({
-    "Please provide column names of responses from the data file provided. Or if the score is calculated using responses from single individual,
+    "Please provide column names of responses from the data file provided. 
+    Or if the score is calculated using responses from single individual,
     please provide values of the responses below"
   })
   output$input_selector <- renderUI({
@@ -168,7 +175,8 @@ server <- function(input, output, session) {
       conditionalPanel(
         condition = "input.gendercriteria == true",
         radioButtons("gender", label = h3("Choose the gender"),
-                     choices = list("NA" = "NA", "Male" = "Male", "Female" = "Female"))
+                     choices = list("NA" = "NA", "Male" = "Male", 
+                                    "Female" = "Female"))
       ),
       checkboxInput("agecriteria", "Age Criteria Inclusion"),
       conditionalPanel(
@@ -192,28 +200,29 @@ server <- function(input, output, session) {
     )
   })
   output$cw_selector <- renderText({
-    "For EQ-5D-5L scores, please select CW if you want to use crosswalk calculator"
+    "For EQ-5D-5L scores, please select CW for crosswalk calculator"
   })
   output$download_selector <- renderUI({
     conditionalPanel(
-      condition <- "input.type == 'Multiple'",
+      condition = "input.type == 'Multiple'",
       downloadButton("downloadData", "Download modified data")
     )
   })
 
-  datasetInput <- reactive({
-    inFile <- input$file1
-    if (is.null(inFile))
+  dataset_input <- reactive({
+    in_file <- input$file1
+    if (is.null(in_file))
       return(NULL)
     validate(
-      need(inFile != "", "Please select a data set")
+      need(in_file != "", "Please select a data set")
     )
-    eq5d_data <- read.csv(inFile$datapath, header = input$header)
+    eq5d_data <- read.csv(in_file$datapath, header = input$header)
   })
 
   calculate <- reactive({
-    dataset <- datasetInput()
-    dims <- c(dataset[[input$col1]], dataset[[input$col2]], dataset[[input$col3]],
+    dataset <- dataset_input()
+    dims <- c(dataset[[input$col1]], dataset[[input$col2]], 
+              dataset[[input$col3]],
               dataset[[input$col4]], dataset[[input$col5]])
     if (is.null(dataset[[input$col1]]) || is.null(dataset[[input$col2]]) 
         || is.null(dataset[[input$col3]]) || is.null(dataset[[input$col4]])
@@ -244,7 +253,7 @@ server <- function(input, output, session) {
     return(ans)
   })
   calculate_single <- reactive({ 
-    dims <- c( input$col1, input$col2, input$col3, input$col4, input$col5)
+    dims <- c(input$col1, input$col2, input$col3, input$col4, input$col5)
     if (is.null(input$col1) || is.null(input$col2) || is.null(input$col3) 
         || is.null(input$col4) || is.null(input$col5)) {
       stop("EQ-5D columns many be empty or invalid")
@@ -274,10 +283,11 @@ server <- function(input, output, session) {
       validate(
         need(input$file1 != "", "No data file found")
       )
-      dataset <- datasetInput()
+      dataset <- dataset_input()
     })
-    output$input.score <- renderText({
-      paste0("You have selected : Score as ", input$col1, input$col2, input$col3, 
+    output$input_score <- renderText({
+      paste0("You have selected : Score as ", input$col1, input$col2, 
+             input$col3, 
              input$col4, input$col5, " for ", input$Country)
 
     })
@@ -287,11 +297,12 @@ server <- function(input, output, session) {
     output$info <- renderText({
       if (is.na(input$gender) | is.null(input$gender) | input$gender == "NA") {
         paste0("You have selected :", input$Score, " for ", input$Country, 
-               " with ages between ", input$agerange[1], " and ", input$agerange[2])
-      }else{
-        paste0("You have selected :", input$Score, " for ", input$Country, " for ",
-               input$gender, " with ages between ", input$agerange[1], " and ", 
+               " with ages between ", input$agerange[1], " and ", 
                input$agerange[2])
+      }else{
+        paste0("You have selected :", input$Score, " for ", input$Country, 
+               " for ", input$gender, " with ages between ", input$agerange[1],
+               " and ",  input$agerange[2])
       }
 
     })
@@ -302,7 +313,7 @@ server <- function(input, output, session) {
       answer <- calculate()$stats
     })
     output$result.data <- renderTable({
-      answer <- calculate()$modifiedData
+      answer <- calculate()$modified_data
     })
 
     output$plot <- renderPlot({
@@ -312,11 +323,10 @@ server <- function(input, output, session) {
       filename = function() { paste(input$Score, "_", input$Country, "_",
                                     input$Method, ".csv", sep = "")},
       content = function(file) {
-        write.csv(calculate()$modifiedData, file, row.names = F)
+        write.csv(calculate()$modified_data, file, row.names = F)
       }
     )
   })
 }
-
 shinyApp(ui, server)
 
